@@ -192,23 +192,24 @@ pub fn formatted_builder() -> Builder {
 pub fn formatted_timed_builder() -> Builder {
     let mut builder = Builder::new();
 
-    builder.format(|f, record| {
-        use std::io::Write;
-        let target = record.target();
-        let max_width = max_target_width(target);
+    builder.format(|_f, _record| {
+        unimplemented!("Timed formatting is unimplemented")
+        // use std::io::Write;
+        // let target = record.target();
+        // let max_width = max_target_width(target);
 
-        let mut style = f.style();
-        let level = colored_level(&mut style, record.level());
+        // let mut style = f.style();
+        // let level = colored_level(&mut style, record.level());
 
-        let mut style = f.style();
-        let target = style.set_bold(true).value(Padded {
-            value: target,
-            width: max_width,
-        });
+        // let mut style = f.style();
+        // let target = style.set_bold(true).value(Padded {
+        //     value: target,
+        //     width: max_width,
+        // });
 
-        let time = f.timestamp_millis();
+        // let time = f.timestamp_millis();
 
-        writeln!(f, " {} {} {} > {}", time, level, target, record.args(),)
+        // writeln!(f, " {} {} {} > {}", time, level, target, record.args(),)
     });
 
     builder
